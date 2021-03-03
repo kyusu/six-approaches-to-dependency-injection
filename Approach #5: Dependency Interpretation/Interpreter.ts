@@ -6,17 +6,17 @@ const interpret = async (program: Program<string>): Promise<string> => {
   switch (program._tag) {
     case "ReadLine": {
       const answer = await question("");
-      const nextProgram = program.value[1](answer);
+      const nextProgram = program.taggedValue.next(answer);
       return interpret(nextProgram);
     }
     case "WriteLine": {
-      const value = program.value[0];
+      const value = program.taggedValue.value;
       console.log(value);
-      const nextProgram = program.value[1]();
+      const nextProgram = program.taggedValue.next();
       return interpret(nextProgram);
     }
     case "Stop": {
-      return program.value;
+      return program.taggedValue.value;
     }
     default:
       return absurd(program);

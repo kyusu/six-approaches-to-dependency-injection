@@ -1,17 +1,20 @@
 import { Program, ReadLine, Stop, WriteLine } from "./Types";
 import interpret from "./Interpreter";
 
-const readFromConsole: Program<string> = WriteLine([
-  "Enter the first value ",
-  () =>
-    ReadLine([
-      void 0,
-      (input1: string) =>
-        WriteLine([
-          "Enter the second value",
-          () => ReadLine([void 0, (input2: string) => Stop([input1, input2])]),
-        ]),
-    ]),
-]);
+const readFromConsole: Program<string> = WriteLine({
+  value: "Enter the first value ",
+  next: () =>
+    ReadLine({
+      next: (input1: string) =>
+        WriteLine({
+          value: "Enter the second value",
+          next: () =>
+            ReadLine({
+              next: (input2: string) =>
+                Stop({ value: [input1, input2].join(",") }),
+            }),
+        }),
+    }),
+});
 
-interpret(readFromConsole).then(args => console.log(args))
+interpret(readFromConsole).then((args) => console.log(args));

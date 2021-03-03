@@ -1,9 +1,9 @@
 export type WithTag<Tag extends string, ToBeTagged> = {
     _tag: Tag;
-    value: ToBeTagged;
+    taggedValue: ToBeTagged;
 };
 
-export const withTag = <Tag>(tag: Tag) => <Value>(value: Value) => ({
+export const withTag = <Tag>(tag: Tag) => <Value>(taggedValue: Value) => ({
     _tag: tag,
-    value,
+    taggedValue,
 });
