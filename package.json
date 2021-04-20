@@ -16,6 +16,6 @@
     "typescript": "4.2.4"
   },
   "dependencies": {
-    "fp-ts": "2.10.3"
+    "fp-ts": "2.10.4"
   }
 }
