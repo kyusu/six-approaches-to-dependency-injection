@@ -10,7 +10,7 @@
   "author": "急須",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "22.15.15",
+    "@types/node": "22.15.16",
     "prettier": "3.5.3",
     "tslib": "2.8.1",
     "typescript": "5.8.3"
